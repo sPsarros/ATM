@@ -13,19 +13,31 @@ class Atm{
     double money=100;
     double *const ptr=&money;
     
-    public:
     //Declaring functions
+    bool checkUser();   
     void deposit(double *,double);
     void getChoice();
     void displayMenu() const;
     void userInfo() const;
-    bool checkUser();
     void withdraw(double *amount,double insert);
 
+    bool checkPin(){
+        USHORT pin;
+        cout<<"Please enter card's pin: ";
+        cin>>pin;
+        
+        if(pin==pass)
+            return true;
+        else
+            return false;
+    }
+
+    public:
     Atm()
     {  
         if(checkUser()==1)
         {
+            cout<<"Welcome back "<<fullname<<endl;
             displayMenu();
             getChoice();
         }
@@ -40,11 +52,11 @@ class Atm{
 };
 
 void Atm::displayMenu() const{
-    cout<<"Welcome back "<<this->fullname<<endl;
     cout<<"1) Deposit\n";
     cout<<"2) Withdraw\n";
     cout<<"3) User's information\n";
-    cout<<"4) Exit\n";
+    cout<<"4) View the menu\n";
+    cout<<"5) Exit\n";
 }
 
 void Atm::userInfo() const{
@@ -78,6 +90,9 @@ void Atm::getChoice(){
                     userInfo();
                     break;
                 case 4:
+                    displayMenu();
+                    break;
+                case 5:
                     return;
                 default: 
                     cout<<"Something went wrong...\n";             
@@ -87,19 +102,25 @@ void Atm::getChoice(){
     }
     
 
-
 }
 
 void Atm::deposit(double *amount,double insert){
-     *amount+=insert; 
+     if(checkPin()==1)
+        *amount+=insert; 
+    else 
+        cout<<"Wrong pin!\n";
 }
 
 void Atm::withdraw(double *amount,double insert){
-     if((*amount-insert)<0){
+    if(checkPin()==1){
+        if((*amount-insert)<0){
         cout<<"You can not withdraw that much money...\n";
-     }
-     else
-     *amount-=insert; 
+        }
+        else
+            *amount-=insert; 
+    }else
+        cout<<"Wrong pin!\n";
+
 }
 
 bool Atm::checkUser(){
@@ -121,4 +142,3 @@ bool Atm::checkUser(){
     return 0;
 
 }
-
