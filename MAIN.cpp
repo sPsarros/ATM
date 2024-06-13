@@ -4,6 +4,7 @@ using namespace std;
 
 int main(void)
 {
+    cout<<"\n\n";
     Atm p1;
 
     return 0;
