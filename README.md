@@ -1,3 +1,3 @@
 # ATM
 
-<h3>This is the v1.0 of the ATM project <br> 
+<h3>The project is still in progress <br> 

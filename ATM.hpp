@@ -1,6 +1,8 @@
 //Basic functions of an ATM
 //machine with a simple way to 
 //authenticate the user
+//Supports only one user
+
 #include <iostream>
 typedef unsigned short int USHORT;
 using namespace std;
