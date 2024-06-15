@@ -4,6 +4,7 @@
 //Supports only one user
 
 #include <iostream>
+#include "USERS.hpp"
 typedef unsigned short int USHORT;
 using namespace std;
 
@@ -116,7 +117,7 @@ void Atm::deposit(double *amount,double insert){
 void Atm::withdraw(double *amount,double insert){
     if(checkPin()==1){
         if((*amount-insert)<0){
-        cout<<"You can not withdraw that much money...\n";
+        cout<<"Your balance is not enough...\n";
         }
         else
             *amount-=insert; 
